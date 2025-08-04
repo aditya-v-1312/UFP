@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unit 4: Data Analysis with Pandas and Excel</title>
+    <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+    h2 {
+      color: #000000;
+      border: 2px solid #c32033;
+      background-color: #c32033;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+
+    h1:hover, h2:hover {
+      background-color: #c32033;
+      color: white;
+      border-bottom: none;
+      cursor: pointer;
+    }
+
+
+    p, ul, pre {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background-color: #eef6ff;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #eef6ff;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+        table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #c32033;
+      color: #fff;
+    }
+
+    td {
+      background-color: #fff;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.95em;
+    }
+
+    footer p {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
+        footer a {
+      color: #991827;
+      text-decoration: none;
+    }
+      
+
+  </style>
+</head>
+<body>
+
+  <h1>Unit 4: Data Analysis with Pandas and Excel</h1>
+
+  <h2>Introduction to Pandas</h2>
+  <ul>
+    <li><strong>Installing:</strong> <code>pip install pandas</code></li>
+    <li><strong>Importing:</strong> <code>import pandas as pd</code></li>
+    <li><strong>File Handling:</strong> <code>read_csv()</code>, <code>read_excel()</code>, <code>to_csv()</code>, <code>to_excel()</code></li>
+    <li><strong>Previewing Data:</strong> <code>.head()</code>, <code>.tail()</code>, <code>.info()</code>, <code>.describe()</code></li>
+  </ul>
+
+  <h2>Data Cleaning</h2>
+  <ul>
+    <li><code>dropna()</code>: Remove missing values</li>
+    <li><code>fillna()</code>: Replace missing data</li>
+    <li><code>drop_duplicates()</code>: Remove duplicate rows</li>
+    <li><code>astype()</code>: Convert column data types</li>
+  </ul>
+
+  <h2>Data Extraction Techniques</h2>
+  <ul>
+    <li><code>df['column']</code>, <code>df[['col1', 'col2']]</code>: Access columns</li>
+    <li><code>df.loc[rows, cols]</code>: Label-based indexing</li>
+    <li><code>df.iloc[rows, cols]</code>: Position-based indexing</li>
+    <li><code>df[df['Age'] > 25]</code>: Boolean filtering</li>
+  </ul>
+
+  <h2>Descriptive Statistics</h2>
+  <ul>
+    <li><strong>Central Tendency:</strong> <code>mean()</code>, <code>median()</code>, <code>mode()</code></li>
+    <li><strong>Dispersion:</strong> <code>std()</code>, <code>var()</code>, <code>min()</code>, <code>max()</code></li>
+    <li><strong>Correlation:</strong> <code>corr()</code>, <code>cov()</code></li>
+  </ul>
+
+  <h2>Data Visualization with Pandas</h2>
+  <ul>
+    <li><code>df.plot()</code>: Line chart</li>
+    <li><code>df.plot.bar()</code>: Bar chart</li>
+    <li><code>df.plot.box()</code>: Box plot</li>
+  </ul>
+
+  <h2>Visualization Libraries</h2>
+  <ul>
+    <li><strong>Matplotlib:</strong> Low-level plotting library</li>
+    <li><strong>Seaborn:</strong> Built on Matplotlib, great for statistical plots</li>
+    <li><code>import matplotlib.pyplot as plt</code></li>
+    <li><code>import seaborn as sns</code></li>
+  </ul>
+
+  <h2>Excel Tools for Analysis</h2>
+  <ul>
+    <li>Data import/export from CSV or XLSX files</li>
+    <li>Sorting, Filtering, Data Validation, Subtotaling</li>
+    <li>Charts: Bar, Line, Pie, Scatter</li>
+    <li>Conditional Formatting for pattern detection</li>
+  </ul>
+
+  <h2>Excel Functions</h2>
+  <table>
+    <tr><th>Category</th><th>Examples</th></tr>
+    <tr><td>Arithmetic</td><td>SUM, AVERAGE, ROUND</td></tr>
+    <tr><td>Text</td><td>LEFT, RIGHT, MID, CONCATENATE</td></tr>
+    <tr><td>Date/Time</td><td>TODAY, NOW, YEAR</td></tr>
+    <tr><td>Logical</td><td>IF, AND, OR, NOT</td></tr>
+    <tr><td>Lookup</td><td>VLOOKUP, HLOOKUP, INDEX, MATCH</td></tr>
+    <tr><td>Statistical</td><td>COUNTIF, STDEV, MEDIAN</td></tr>
+  </table>
+
+  <h2>Excel Forecasting Tools</h2>
+  <ul>
+    <li><strong>Goal Seek:</strong> Find input to achieve a target output</li>
+    <li><strong>Scenario Manager:</strong> Compare different outcomes</li>
+    <li><strong>Forecast Sheet:</strong> Predict future values from data trends</li>
+  </ul>
+
+  <h2>Practice Excel Online</h2>
+  <h2>Instructions for Excel Practice</h2>
+    <ul>
+      <li>Use the embedded Google Sheet below to practice Excel functions directly in your browser.</li>
+      <li>The sheet contains sample employee data — Name, Department, Date of Joining, Salary, Bonus, and more.</li>
+      <li>Try using formulas like <code>SUM</code>, <code>AVERAGE</code>, <code>IF</code>, <code>VLOOKUP</code>, <code>COUNTIF</code>, and <code>CONCATENATE</code> in empty cells.</li>
+      <li>You can calculate Total Pay, assign Grades based on Salary, and check if an employee Passed or not.</li>
+      <li>Use <strong>cell references</strong> (e.g., <code>=D2+E2</code>) instead of typing numbers.</li>
+      <li>Don't change the headings or delete rows, but feel free to enter new employee data below the table for extra practice.</li>
+      <li>Bonus Task: Apply Conditional Formatting to highlight high salaries or grades.</li>
+    </ul>
+
+  <p>Try formulas interactively in this embedded Google Sheet:</p>
+  <iframe src="https://docs.google.com/spreadsheets/d/1Peyk57D7m4uOMoAvUzHp5YREw32N7Zj_VAxREv_Y9jM/edit?usp=sharing" width="100%" height="500"></iframe>
+
+  <footer>
+    <a href="datascience.html"><<< Back to Data Science Main Page</a>
+    <p><a href="unit3.html"><<< LAST UNIT</a></p>
+  </footer>
+
+</body>
+</html>

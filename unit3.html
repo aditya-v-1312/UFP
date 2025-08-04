@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unit 3: Python Programming for Data Science</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+    h2 {
+      color: #000000;
+      border: 2px solid #c32033;
+      background-color: #c32033;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    p, ul, pre {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background-color: #eef6ff;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #eef6ff;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #c32033;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.95em;
+    }
+
+    footer p {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer a {
+      color: #991827;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Unit 3: Python Programming for Data Science</h1>
+
+  <h2>Overview</h2>
+  <p>Python is a high-level, general-purpose programming language that is simple to learn and powerful in its capabilities. It is widely used in data science due to its rich ecosystem of libraries for computation, visualization, and machine learning.</p>
+
+  <h2>Why Python for Data Science?</h2>
+  <ul>
+    <li>Easy-to-understand syntax similar to English.</li>
+    <li>Massive community support and open-source ecosystem.</li>
+    <li>Powerful libraries like NumPy, Pandas, Matplotlib, and Scikit-learn.</li>
+    <li>Great for scripting, automation, web development, and data analysis.</li>
+  </ul>
+
+  <h2>Basic Python Concepts</h2>
+  <ul>
+    <li><strong>Variables:</strong> Store data in memory using syntax like <code>x = 5</code>.</li>
+    <li><strong>Data Types:</strong> Integers, floats, strings, booleans, and complex types.</li>
+    <li><strong>Comments:</strong> Use <code>#</code> for single-line and <code>'''...'''</code> for multi-line.</li>
+    <li><strong>Indentation:</strong> Controls the flow of the program (especially in loops and functions).</li>
+  </ul>
+
+  <h2>Control Flow</h2>
+  <ul>
+    <li><strong>Conditional Statements:</strong> <code>if</code>, <code>elif</code>, <code>else</code> blocks to control decisions.</li>
+    <li><strong>Loops:</strong>
+      <ul>
+        <li><code>for</code> loops: Iterate over lists or ranges.</li>
+        <li><code>while</code> loops: Repeat while a condition is true.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Data Structures</h2>
+  <ul>
+    <li><strong>Lists:</strong> Ordered, mutable collections <code>[1, 2, 3]</code></li>
+    <li><strong>Tuples:</strong> Ordered, immutable collections <code>(1, 2, 3)</code></li>
+    <li><strong>Dictionaries:</strong> Key-value pairs <code>{"name": "Alice"}</code></li>
+    <li><strong>Sets:</strong> Unordered collections with no duplicates <code>{1, 2, 3}</code></li>
+  </ul>
+
+  <h2>Functions</h2>
+  <ul>
+    <li><strong>Defining:</strong> Use <code>def</code> keyword to define reusable blocks of code.</li>
+    <li><strong>Example:</strong></li>
+  </ul>
+  <pre><code>def greet(name):
+    return "Hello " + name</code></pre>
+
+  <h2>Libraries for Data Science</h2>
+  <ul>
+    <li><strong>NumPy:</strong> Arrays and mathematical operations.</li>
+    <li><strong>Pandas:</strong> Data manipulation and analysis (dataframes).</li>
+    <li><strong>Matplotlib / Seaborn:</strong> Visualization tools for plotting graphs.</li>
+    <li><strong>Scikit-learn:</strong> Machine learning algorithms and utilities.</li>
+  </ul>
+
+  <h2>Working with Files</h2>
+  <ul>
+    <li><strong>Reading a file:</strong> <code>open("data.txt", "r")</code></li>
+    <li><strong>Reading CSV with Pandas:</strong> <code>pd.read_csv("data.csv")</code></li>
+    <li><strong>Writing to a file:</strong> <code>open("output.txt", "w")</code></li>
+  </ul>
+
+  <h2>Jupyter Notebooks</h2>
+  <ul>
+    <li>Browser-based interactive environment for writing and running Python code.</li>
+    <li>Supports Markdown, code, and output visualization.</li>
+    <li>Ideal for experimenting with data science code in real time.</li>
+  </ul>
+
+  <h2>Practice Python Online</h2>
+  <p>Google Colab is a free online platform where you can run Python in the cloud, with built-in access to GPUs and libraries.</p>
+  <p><strong>Click the link below to try Python interactively:</strong></p>
+  <p style="background-color: #991827;"><a href="https://colab.research.google.com/" target="_blank" style="color: #000000;"> <strong> Google Colab </strong> </a></p>
+
+  <h2>Sample Python Code</h2>
+  <pre><code># Sample program to read a CSV and get statistics
+    import pandas as pd
+
+    data = pd.read_csv("sample.csv")
+    print(data.head())
+    print(data.describe())
+  </code></pre>
+
+  <footer>
+    <p><a href="datascience.html"><<< Back to Data Science Main Page</a></p>
+        <p><a href="unit2.html"><<< LAST UNIT</a></p>
+    <P><a href="unit4.html">NEXT UNIT >>></a></P>
+  </footer>
+</body>
+</html>

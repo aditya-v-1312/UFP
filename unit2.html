@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unit 2: Data Collection and Storage</title>
+    <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+    h2 {
+      color: #000000;
+      border: 2px solid #c32033;
+      background-color: #c32033;
+      padding: 10px;
+      margin-top: 30px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    p, ul, pre {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background-color: #eef6ff;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #eef6ff;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.95em;
+    }
+
+    footer p {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
+        footer a {
+      color: #991827;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Unit 2: Data Collection and Storage</h1>
+
+  <h2>Types of Data</h2>
+  <ul>
+    <li><strong>Structured:</strong> Tabular format, easily stored in relational databases (e.g., <code>CSV</code>, <code>SQL</code>).</li>
+    <li><strong>Unstructured:</strong> Freeform data like text, images, video, audio (e.g., social media posts, photos).</li>
+    <li><strong>Semi-structured:</strong> JSON, XML — data with some organizational properties but no rigid schema.</li>
+  </ul>
+
+  <h2>Data Collection Methods</h2>
+  <ul>
+    <li><strong>Manual Entry:</strong> Google Forms, Excel sheets, surveys.</li>
+    <li><strong>Web Scraping:</strong> Using <code>BeautifulSoup</code>, <code>Scrapy</code>, or <code>Selenium</code> to extract data from websites.</li>
+    <li><strong>APIs:</strong> Access structured data from platforms like Twitter, weather services, government databases.</li>
+    <li><strong>Sensors and IoT Devices:</strong> Automated collection from smartwatches, traffic monitors, thermostats.</li>
+    <li><strong>Transaction Logs:</strong> Sales, inventory, and activity records from business operations.</li>
+  </ul>
+
+  <h2>Common Data Sources</h2>
+  <ul>
+    <li><strong>Open Government Portals:</strong> <code>data.gov.in</code>, WHO datasets, UN repositories.</li>
+    <li><strong>Academic Sources:</strong> Kaggle, UCI Machine Learning Repository, research papers.</li>
+    <li><strong>Private Sector Data:</strong> CRMs, ERP systems, financial databases.</li>
+  </ul>
+
+  <h2>Data Storage Systems</h2>
+  <ul>
+    <li><strong>Flat Files:</strong> <code>.csv</code>, <code>.json</code>, <code>.xml</code> — best for simple, portable storage.</li>
+    <li><strong>Relational Databases (RDBMS):</strong> MySQL, PostgreSQL — use SQL to manage structured data.</li>
+    <li><strong>NoSQL Databases:</strong> MongoDB, Cassandra — ideal for unstructured or flexible schema data.</li>
+    <li><strong>Data Lakes:</strong> Hadoop, Amazon S3 — store vast amounts of raw data in native format.</li>
+    <li><strong>Cloud Storage:</strong> Google Drive, OneDrive, Dropbox — offer file storage with online access.</li>
+  </ul>
+
+  <h2>Data Quality and Integrity</h2>
+  <ul>
+    <li><strong>Accuracy:</strong> Correct representation of real-world values.</li>
+    <li><strong>Completeness:</strong> No missing values or records.</li>
+    <li><strong>Consistency:</strong> No contradictory data across systems.</li>
+    <li><strong>Timeliness:</strong> Data should be up-to-date and current.</li>
+    <li><strong>Uniqueness:</strong> Avoid duplication of records.</li>
+  </ul>
+
+  <h2>Backup and Security Measures</h2>
+  <ul>
+    <li><strong>Backups:</strong> Automatic or scheduled file and database backups to prevent data loss.</li>
+    <li><strong>Encryption:</strong> Secure sensitive data both during transfer and at rest.</li>
+    <li><strong>Authentication:</strong> Username/password protection, OTP, biometrics for access control.</li>
+    <li><strong>Audit Trails:</strong> Logging of access and changes for traceability.</li>
+  </ul>
+
+  <h2>Popular Tools</h2>
+  <ul>
+    <li><strong>Data Collection:</strong> Google Forms, Typeform, Excel.</li>
+    <li><strong>Scraping:</strong> <code>BeautifulSoup</code>, <code>Scrapy</code>, <code>Selenium</code>.</li>
+    <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB.</li>
+    <li><strong>Cloud Platforms:</strong> Google Cloud Storage, AWS S3, Azure.</li>
+  </ul>
+
+  <footer>
+    <a href="datascience.html"> <<< Back to Data Science Main Page</a>
+    <p><a href="unit1.html"><<< LAST UNIT</a></p>
+    <p><a href="unit3.html">NEXT UNIT >>></a></p>
+  </footer>
+
+</body>
+</html>
