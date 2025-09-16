@@ -4,21 +4,33 @@ import os
 
 app = Flask(__name__)
 
-BASE_DIR = r"C:\Users\adity\iCloudDrive\Documents\advanced"
+# --- BASE DIR ---
+# Uses the directory where app.py lives (Linux-friendly)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DATABASE_URL = "postgresql://neondb_owner:npg_v5UnzHmfSRj1@ep-falling-hat-aep2j8gp-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require"
+# --- ENVIRONMENT VARIABLES ---
+# These should be set in Render dashboard
+DATABASE_URL = os.environ.get("DATABASE_URL")
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback_secret")
 
-try:
-    connection = psycopg2.connect(DATABASE_URL)
-    connection.autocommit = True
-    print("✅ Connected to Neon PostgreSQL")
-except Exception as e:
-    print("❌ Database connection failed:", e)
-    connection = None
+app.config['SECRET_KEY'] = SECRET_KEY
 
+
+# --- DB CONNECTION FUNCTION ---
+def get_connection():
+    """
+    Create a fresh connection to the Neon DB each time.
+    Render keeps connections alive briefly, so this is safer
+    than using one global connection.
+    """
+    return psycopg2.connect(DATABASE_URL, sslmode='require')
+
+
+# --- ROUTES ---
 
 @app.route("/", methods=["GET"])
 def index():
+    # Serve index.html from the same folder as app.py
     return send_from_directory(BASE_DIR, "index.html")
 
 
@@ -27,16 +39,16 @@ def login():
     student_id = request.form.get("username")
     password = request.form.get("password")
 
-    if not connection:
-        return "<h3 style='color:red;text-align:center;'>Database connection unavailable!</h3>"
-
-    cursor = connection.cursor()
-    cursor.execute(
-        "SELECT * FROM users WHERE id = %s AND password = %s",
-        (student_id, password)
-    )
-    user = cursor.fetchone()
-    cursor.close()
+    try:
+        with get_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT * FROM users WHERE id = %s AND password = %s",
+                    (student_id, password)
+                )
+                user = cursor.fetchone()
+    except Exception as e:
+        return f"<h3 style='color:red;text-align:center;'>Database connection error: {e}</h3>"
 
     if user:
         return redirect("/mainpage")
@@ -59,32 +71,51 @@ def register_user():
     student_id = request.form.get("username")
     password = request.form.get("password")
 
-    if not connection:
-        return "<h3 style='color:red;text-align:center;'>Database connection unavailable!</h3>"
+    try:
+        with get_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM users WHERE id = %s", (student_id,))
+                existing = cursor.fetchone()
 
-    cursor = connection.cursor()
+                if existing:
+                    return "<h3 style='color:red;text-align:center;'>User already exists!</h3>"
 
-    cursor.execute("SELECT * FROM users WHERE id = %s", (student_id,))
-    existing = cursor.fetchone()
-
-    if existing:
-        cursor.close()
-        return "<h3 style='color:red;text-align:center;'>User already exists!</h3>"
-
-    cursor.execute(
-        "INSERT INTO users (id, password) VALUES (%s, %s)",
-        (student_id, password)
-    )
-    connection.commit()
-    cursor.close()
+                cursor.execute(
+                    "INSERT INTO users (id, password) VALUES (%s, %s)",
+                    (student_id, password)
+                )
+                connection.commit()
+    except Exception as e:
+        return f"<h3 style='color:red;text-align:center;'>Database connection error: {e}</h3>"
 
     return "<h3 style='color:green;text-align:center;'>✅ Account created successfully! <a href='/'>Login here</a></h3>"
 
 
 @app.route("/<path:path>", methods=["GET"])
 def static_files(path):
+    """
+    Serves any file located in BASE_DIR.
+    Example: /style.css will serve style.css from the repo root.
+    """
     return send_from_directory(BASE_DIR, path)
 
 
+@app.route("/db-test")
+def db_test():
+    """
+    Quick route to check database connectivity.
+    """
+    try:
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT NOW();")
+                now = cur.fetchone()
+        return f"✅ Database connected! Server time: {now}"
+    except Exception as e:
+        return f"❌ Database connection failed: {e}"
+
+
+# --- MAIN ---
 if __name__ == "__main__":
+    # For local testing
     app.run(debug=True, host="0.0.0.0", port=5000)
