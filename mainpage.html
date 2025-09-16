@@ -85,6 +85,11 @@
 
   <div class="container">
     <h2>Welcome to the UFP Portal</h2>
+    <div class="module">
+      <h3>🔍 Find a Module</h3>
+      <input type="text" id="searchInput" placeholder="Type to search for modules..." style="width: 100%; padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc;">
+      <div id="searchResults" style="margin-top: 15px;"></div>
+    </div>
     <p>The University Foundation Programme (UFP) at Navrachana University is designed to help students develop essential academic and life skills. This portal gives access to course modules, learning materials, and practice platforms.</p>
 
     <div class="module">
@@ -119,6 +124,94 @@
       <a href="environmental.html">Go to Environmental Science & Climate Change </a>
     </div>
   </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const moduleHashTable = {
+    "data science": {
+      name: "Data Science and Computing",
+      url: "datascience.html",
+      desc: "Learn Python, data analysis, and tools like Pandas and Excel."
+    },
+    "critical thinking": {
+      name: "Critical Thinking & Research",
+      url: "criticalthinking.html",
+      desc: "Develop logical reasoning, argumentation, and research skills."
+    },
+    "research": {
+      name: "Critical Thinking & Research",
+      url: "research.html",
+      desc: "Develop logical reasoning, argumentation, and research skills."
+    },
+    "humanities": {
+      name: "Humanities & Arts",
+      url: "humanities.html",
+      desc: "Explore human culture, creativity, and historical contexts."
+    },
+    "arts": {
+      name: "Humanities & Arts",
+      url: "humanities.html",
+      desc: "Explore human culture, creativity, and historical contexts."
+    },
+    "environmental science": {
+      name: "Environmental Science & Climate Change",
+      url: "environmental.html",
+      desc: "Understand environmental systems and sustainability practices."
+    },
+    "climate change": {
+      name: "Environmental Science & Climate Change",
+      url: "environmental.html",
+      desc: "Understand environmental systems and sustainability practices."
+    },
+    "reading writing": {
+      name: "Reading & Writing 1 & 2",
+      url: "readingwritting1.html",
+      desc: "Enhance your academic reading and writing abilities."
+    }
+  };
+
+  // 2. The Application: Logic to handle the search functionality.
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  searchInput.addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase().trim();
+    
+    // Clear previous results
+    searchResults.innerHTML = '';
+
+    if (query.length < 2) {
+      return; // Don't search for very short strings
+    }
+
+    // Use the hash table for an efficient lookup
+    let resultsFound = {}; // Use an object to avoid duplicate results
+    for (const key in moduleHashTable) {
+      if (key.includes(query)) {
+        const module = moduleHashTable[key];
+        // Store by URL to prevent adding the same module multiple times
+        resultsFound[module.url] = module; 
+      }
+    }
+    
+    // Display the results
+    const resultsArray = Object.values(resultsFound);
+    if (resultsArray.length > 0) {
+      let resultsHTML = '<ul>';
+      resultsArray.forEach(module => {
+        resultsHTML += `
+          <li style="margin-bottom: 10px;">
+            <a href="${module.url}" style="font-weight: bold;">${module.name}</a>
+            <p style="margin: 0; font-size: 14px;">${module.desc}</p>
+          </li>`;
+      });
+      resultsHTML += '</ul>';
+      searchResults.innerHTML = resultsHTML;
+    } else {
+      searchResults.innerHTML = '<p>No modules found.</p>';
+    }
+  });
+});
+</script>
 
   <footer>
     &copy; 2025 Navrachana University | UFP Program
